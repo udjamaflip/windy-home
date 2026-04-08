@@ -3,10 +3,7 @@
         "step": {
             "user": {
                 "title": "Windy Home Setup",
-                "description": "Enter your Windy API key and location details. Get a key at {api_keys_url}",
-                "description_placeholders": {
-                    "api_keys_url": "https://api.windy.com/keys"
-                },
+                "description": "Enter your Windy API key and location details. Get a key from the Windy API portal.",
                 "data": {
                     "api_key": "API Key",
                     "location_name": "Location Name",
