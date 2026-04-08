@@ -6,6 +6,7 @@
     "documentation": "https://github.com/udjamaflip/windy-home",
     "iot_class": "cloud_polling",
     "issue_tracker": "https://github.com/udjamaflip/windy-home/issues",
+    "after_dependencies": ["http"],
     "requirements": ["aiohttp>=3.8.0"],
     "version": "0.1.0"
 }
