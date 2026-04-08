@@ -1,0 +1,41 @@
+{
+    "config": {
+        "step": {
+            "user": {
+                "title": "Windy Home Setup",
+                "description": "Enter your Windy API key and location details. Get a key at https://api.windy.com/keys",
+                "data": {
+                    "api_key": "API Key",
+                    "location_name": "Location Name",
+                    "latitude": "Latitude",
+                    "longitude": "Longitude",
+                    "forecast_model": "Forecast Model",
+                    "enable_waves": "Enable wave data (requires ocean/coastal location)",
+                    "webcam_api_key": "Webcam API Key (optional, from api.windy.com)"
+                }
+            }
+        },
+        "error": {
+            "invalid_auth": "Invalid API key. Please check your key at api.windy.com",
+            "cannot_connect": "Failed to connect to Windy API",
+            "unknown": "An unexpected error occurred"
+        },
+        "abort": {
+            "already_configured": "This location is already configured"
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "title": "Windy Home Options",
+                "data": {
+                    "update_interval": "Update interval (minutes, 5-60)",
+                    "forecast_model": "Forecast Model",
+                    "enable_waves": "Enable wave data",
+                    "webcam_api_key": "Webcam API Key",
+                    "webcam_ids": "Webcam IDs (comma-separated)"
+                }
+            }
+        }
+    }
+}

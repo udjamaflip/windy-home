@@ -1,0 +1,3 @@
+# Minimal HA configuration for integration testing.
+# The integration is mounted at /config/custom_components/windy_home/
+default_config:

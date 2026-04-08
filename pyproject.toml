@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "windy-home"
+version = "0.1.0"
+description = "Home Assistant custom integration for Windy.com weather data"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+authors = [
+    {name = "Andy Sharman", email = "1192469+udjamaflip@users.noreply.github.com"},
+]
+dependencies = [
+    "aiohttp>=3.8.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/udjamaflip/windy-home"
+Repository = "https://github.com/udjamaflip/windy-home"
+Issues = "https://github.com/udjamaflip/windy-home/issues"
+Changelog = "https://github.com/udjamaflip/windy-home/blob/main/CHANGELOG.md"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-asyncio>=0.23",
+    "homeassistant",
+    "ruff>=0.4",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+
+[tool.ruff]
+target-version = "py310"
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "SIM"]
+ignore = ["E501", "UP017"]
+
+[tool.setuptools.packages.find]
+include = ["custom_components*"]

@@ -1,0 +1,42 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Get version from tag
+        id: version
+        run: echo "version=${GITHUB_REF#refs/tags/v}" >> "$GITHUB_OUTPUT"
+
+      - name: Update manifest version
+        run: |
+          cd custom_components/windy_home
+          python -c "
+          import json
+          with open('manifest.json') as f:
+              m = json.load(f)
+          m['version'] = '${{ steps.version.outputs.version }}'
+          with open('manifest.json', 'w') as f:
+              json.dump(m, f, indent=4)
+          "
+
+      - name: Create zip
+        run: |
+          cd custom_components
+          zip -r ../windy_home.zip windy_home/
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          files: windy_home.zip

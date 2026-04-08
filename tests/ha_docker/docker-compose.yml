@@ -1,0 +1,25 @@
+services:
+  homeassistant:
+    image: ghcr.io/home-assistant/home-assistant:2024.12
+    container_name: windy-home-test
+    restart: unless-stopped
+    volumes:
+      # Persistent config survives restarts so you can keep your setup
+      - ha_config:/config
+      # Seed config on first run
+      - ./config/configuration.yaml:/config/configuration.yaml:ro
+      # Live-mount the integration — edits are reflected on HA restart
+      - ../../custom_components/windy_home:/config/custom_components/windy_home:ro
+    ports:
+      - "18123:8123"
+    environment:
+      - TZ=UTC
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "-o", "/dev/null", "-w", "%{http_code}", "http://localhost:8123/"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 30s
+
+volumes:
+  ha_config:
